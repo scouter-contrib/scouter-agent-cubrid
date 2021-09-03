@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"> 
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>io.github.scouter-project</groupId> 
+	<artifactId>scouter-agent-cubrid</artifactId>
+	<name>scouter.agent.cubrid</name> 
+	<version>1.0.0</version> 
+	
+	<packaging>jar</packaging> 
+	
+	<dependencies> 
+		<dependency> 
+			<groupId>junit</groupId> 
+			<artifactId>junit</artifactId> 
+			<version>4.12</version> 
+			<scope>test</scope> 
+		</dependency>
+		<dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.scouter-project</groupId>
+            <artifactId>scouter-common</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+	</dependencies> 
+
+	<properties> 
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding> 
+		<maven.compiler.source>1.8</maven.compiler.source> 
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<agent-cubrid.product.name>scouter-agent-cubrid</agent-cubrid.product.name>           
+                <agent-cubrid.output.dir>${project.build.directory}/scouter-cubrid-agent</agent-cubrid.output.dir>
+                <agent-cubrid.package.dir>${project.build.directory}/package</agent-cubrid.package.dir>
+	</properties> 
+	
+	 <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>scouter.agent.cubrid.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                            <shadedArtifactAttached>false</shadedArtifactAttached>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <createSourcesJar>true</createSourcesJar>
+                            <shadeSourcesContent>true</shadeSourcesContent>
+                            <filters>
+                                <filter>
+                                    <artifact>io.github.scouter-project:scouter-common</artifact>
+                                    <excludes>
+                                        <exclude>scouter/v.properties</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+	    <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                            <includeScope>runtime</includeScope>
+                            <excludeArtifactIds>scouter-common</excludeArtifactIds>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+	<plugin>
+	    <artifactId>maven-antrun-plugin</artifactId>
+	    <executions>
+	     <execution>
+	      <phase>package</phase>
+	      <configuration>
+	       <tasks>
+                <mkdir dir="${agent-cubrid.output.dir}" />
+	        <copy todir="${agent-cubrid.output.dir}/conf/" overwrite="true">
+        		<fileset dir="conf/">
+	        	<include name="*" />
+        	        </fileset>
+	        </copy>
+		<copy todir="${agent-cubrid.output.dir}" overwrite="true">
+			<fileset dir="execute/">
+			<include name="*" />
+			</fileset>
+		</copy>
+		<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${agent-cubrid.output.dir}/${agent-cubrid.product.name}.jar" overwrite="true"/>
+		<chmod file="${agent-cubrid.output.dir}/*.sh" perm="ugo+rx"/>
+		<mkdir dir="${agent-cubrid.package.dir}" />
+		<tar destfile="${agent-cubrid.package.dir}/${agent-cubrid.product.name}.tar">
+                        <tarfileset dir="${agent-cubrid.output.dir}" >
+                        <include name="**/*.jar" />
+                        </tarfileset>
+                        <tarfileset dir="${agent-cubrid.output.dir}" >
+                        <include name="**/*.bat" />
+                        </tarfileset>
+                        <tarfileset dir="${agent-cubrid.output.dir}" >
+                        <include name="**/conf/*" />
+                        </tarfileset>
+                        <tarfileset dir="${agent-cubrid.output.dir}" mode="755">
+                        <include name="**/*.sh" />
+                        </tarfileset>
+                </tar>
+	       <gzip src="${agent-cubrid.package.dir}/${agent-cubrid.product.name}.tar" destfile="${agent-cubrid.package.dir}/${agent-cubrid.product.name}.tar.gz" />
+	       <delete file="${agent-cubrid.package.dir}/${agent-cubrid.product.name}.tar" />
+	       </tasks>
+	      </configuration>
+	      <goals>
+	       <goal>run</goal>
+	      </goals>
+	     </execution>
+	    </executions>
+	   </plugin>
+        </plugins>
+    </build>
+</project>
