@@ -128,7 +128,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
                         <include name="**/*.sh" />
                         </tarfileset>
                 </tar>
-	       <gzip src="${agent-cubrid.package.dir}/${agent-cubrid.product.name}.tar" destfile="${agent-cubrid.package.dir}/${agent-cubrid.product.name}.tar.gz" />
+	       <gzip src="${agent-cubrid.package.dir}/${agent-cubrid.product.name}.tar" destfile="${agent-cubrid.package.dir}/${project.build.finalName}.tar.gz" />
 	       <delete file="${agent-cubrid.package.dir}/${agent-cubrid.product.name}.tar" />
 	       </tasks>
 	      </configuration>
