@@ -2,20 +2,28 @@
 For Monitoring CUBRID DBMS (https://github.com/CUBRID/cubrid)
 
 CUBRID Agent will working after scouter are updated.
-## HOW TO BUILD/INSTALL SCOUTER-AGENT-CUBRID
-### ECLIPSE
-- import maven project using the pom.xml.
-- need scouter-common.jar (Created by scouter-common-ver.2.10.0)
-### LINUX
+## HOW TO BUILD SCOUTER-AGENT-CUBRID
+
+### Requirements
+
+- JDK 1.8 (add %JAVA_HOME% environment variable)
+- MAVEN (add %MAVEN_HOME% environment variable)
+
+#### LINUX
 ```
-build.sh (MAVEN Project)
+build.sh
 ```
-### WINDOWS
+#### WINDOWS
 ```
-build.bat (MAVEN Project)
+build.bat
 ```
 
-- Package Path : SourcePath/target/package/scouter-agent-cubrid-[Version].tar.gz
+#### ECLIPSE
+- import maven project using the pom.xml.
+- need scouter-common.jar (Created by scouter-common-ver.2.10.0)
+
+##### Output Files Info
+- Package File : SourcePath/target/package/scouter-agent-cubrid-[Version].tar.gz
 - Excute Files : SourcePath/target/scouter-cubrid-agent
 
 ## PORT INFO (DEFAULT)
@@ -36,4 +44,6 @@ cubrid_cms_ip=127.0.0.1     # Cubrid Manager Server IP
 cubrid_cms_port=8001        # Cubrid Manager Server Port
 ```
 ## User Guild
-To Be Update
+- [Quick Start](documents/quick_start.md)
+- [Client UI Guide](documents/client_guide.md)
+
