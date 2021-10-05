@@ -1,7 +1,9 @@
 # SCOUTER-AGENT-CUBRID
 For Monitoring CUBRID DBMS (https://github.com/CUBRID/cubrid)
 
-CUBRID Agent will working after scouter are updated.
+CUBRID Agent is supported since scouter version 2.15.0.
+(https://github.com/scouter-project/scouter/releases/tag/v2.15.0)
+
 ## HOW TO BUILD SCOUTER-AGENT-CUBRID
 
 ### Requirements
