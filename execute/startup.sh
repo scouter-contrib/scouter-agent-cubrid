@@ -4,8 +4,8 @@ SHELL_PATH="$( cd "$( dirname "$0" )" && pwd -P )"
 function show_usage ()
 {
   echo "Usage: $0 [CMS USER_NAME] [CMS USER PASSWORD] [DBA USER NAME] [DBA USER PASSWORD]"
-  echo " EXAMPLES"
-  echo "./startup.bat admin admin dba \"\""
+  echo " EXAMPLES :"
+  echo "./startup.sh admin admin dba \"\""
   echo ""
 }
 

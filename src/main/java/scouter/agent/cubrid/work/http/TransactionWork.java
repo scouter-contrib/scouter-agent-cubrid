@@ -56,10 +56,6 @@ public class TransactionWork {
 
         if (responseJson.get("transactioninfo") == null
                 || String.valueOf(responseJson.get("transactioninfo")).equals("{}")) {
-            Logger.systemPrintln(
-                    "transaction( "
-                            + String.valueOf(responseJson.get("dbname"))
-                            + ") is not exist");
             CMServerInfo.getInstance()
                     .transactionInfo
                     .put(String.valueOf(responseJson.get("dbname")), newMap);

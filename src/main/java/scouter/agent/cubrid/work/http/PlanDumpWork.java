@@ -58,7 +58,7 @@ public class PlanDumpWork {
         String xaslCache = null;
         String filterCache = null;
 
-        if (!resultJson.get("status").equals("success")) {
+        if (!String.valueOf(resultJson.get("status")).equals("success")) {
             Logger.println("PlanDumpWork jsonToPlanData resultJson failed");
             return;
         } else {

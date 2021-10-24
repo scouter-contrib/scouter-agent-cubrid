@@ -39,27 +39,4 @@ public class UdpSendAlive implements Runnable {
         }
     }
 
-    /*
-        @Override
-        public void run() {
-            String threadName = Thread.currentThread().getName();
-            Logger.systemDebugPrintln("- " + threadName + " has been started");
-            try{
-                InetAddress ia = InetAddress.getByName("172.31.0.122");
-                DatagramSocket ds = new DatagramSocket(6200);
-                str = "JAVA";
-                byte buffer[] = str.getBytes();
-                DatagramPacket dp = new DatagramPacket(
-                        buffer,buffer.length,ia,SERVERPORT);
-                ds.send(dp);
-    //            buffer = new byte[512];
-    //            dp = new DatagramPacket(buffer,buffer.length);
-    //            ds.receive(dp);
-                Logger.systemDebugPrintln("server ip : "+dp.getAddress() + " , server port : "+dp.getPort());
-                Logger.systemDebugPrintln("send message : "+ new String(dp.getData()).trim());
-            }catch(IOException ioe){
-                ioe.printStackTrace();
-            }
-        }
-    */
 }
