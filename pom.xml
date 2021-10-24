@@ -4,7 +4,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	<groupId>io.github.scouter-project</groupId> 
 	<artifactId>scouter-agent-cubrid</artifactId>
 	<name>scouter.agent.cubrid</name> 
-	<version>1.0.1</version> 
+	<version>1.0.2</version>
 	
 	<packaging>jar</packaging> 
 	

@@ -50,17 +50,17 @@ public class HostStatWork {
 
     private static void setDeltaVal() {
         cpuUserDelta =
-                Long.parseLong(hostData.lastHostStatData.get("cpu_user").toString())
-                        - Long.parseLong(hostData.prvHostStatData.get("cpu_user").toString());
+                Long.parseLong(String.valueOf(hostData.lastHostStatData.get("cpu_user")))
+                        - Long.parseLong(String.valueOf(hostData.prvHostStatData.get("cpu_user")));
         cpuKernelDelta =
-                Long.parseLong(hostData.lastHostStatData.get("cpu_kernel").toString())
-                        - Long.parseLong(hostData.prvHostStatData.get("cpu_kernel").toString());
+                Long.parseLong(String.valueOf(hostData.lastHostStatData.get("cpu_kernel")))
+                        - Long.parseLong(String.valueOf(hostData.prvHostStatData.get("cpu_kernel")));
         cpuIdleDelta =
-                Long.parseLong(hostData.lastHostStatData.get("cpu_idle").toString())
-                        - Long.parseLong(hostData.prvHostStatData.get("cpu_idle").toString());
+                Long.parseLong(String.valueOf(hostData.lastHostStatData.get("cpu_idle")))
+                        - Long.parseLong(String.valueOf(hostData.prvHostStatData.get("cpu_idle")));
         cpuIowaitDelta =
-                Long.parseLong(hostData.lastHostStatData.get("cpu_iowait").toString())
-                        - Long.parseLong(hostData.prvHostStatData.get("cpu_iowait").toString());
+                Long.parseLong(String.valueOf(hostData.lastHostStatData.get("cpu_iowait")))
+                        - Long.parseLong(String.valueOf(hostData.prvHostStatData.get("cpu_iowait")));
         cpuTotalDelta = cpuUserDelta + cpuKernelDelta + cpuIdleDelta + cpuIowaitDelta;
     }
 

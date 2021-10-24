@@ -46,7 +46,20 @@ public class Main {
         HttpConnect.cubrid_db_user_name = System.getenv("agent_dba_user");
         HttpConnect.cubrid_db_user_passwd = System.getenv("agent_dba_passwd");
         
-        Logger.systemPrintln("Scouter Cubrid Agent Start Ver. 1.0.0");
+        if (HttpConnect.cubrid_cms_user_name == null) {
+            HttpConnect.cubrid_cms_user_name = "admin";
+        }
+        if (HttpConnect.cubrid_cms_user_passwd == null) {
+            HttpConnect.cubrid_cms_user_passwd = "admin";
+        }
+        if (HttpConnect.cubrid_db_user_name == null) {
+            HttpConnect.cubrid_db_user_name = "dba";
+        }
+        if (HttpConnect.cubrid_db_user_passwd == null) {
+            HttpConnect.cubrid_db_user_passwd = "";
+        }
+        
+        Logger.systemPrintln("Scouter Cubrid Agent Start Ver. 1.0.2");
         Logger.systemPrintln("System JRE version : " + System.getProperty("java.version"));
 
         if (true) {

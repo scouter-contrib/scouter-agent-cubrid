@@ -59,7 +59,7 @@ public class SendDataCollector {
     	String sql_id;
     	
     	for (String dbName : tranSactionInfo.keySet()) {
-    		ListValue pidLv = sendData.newList("pid");
+          ListValue pidLv = sendData.newList("pid");
         	ListValue sqlIdLv = sendData.newList("SQL_ID");
         	ListValue sqlTextLv = sendData.newList("SQL_Text");
         	ListValue userLv = sendData.newList("user");
@@ -68,22 +68,26 @@ public class SendDataCollector {
         	ListValue queryTimeLv = sendData.newList("query_time");
         	ListValue tranTimeLv = sendData.newList("tran_time");
         	
-        	  for (String index : tranSactionInfo.get(dbName).keySet()) {
-        		  JSONParser parser = new JSONParser();
+        	for (String index : tranSactionInfo.get(dbName).keySet()) {
+              JSONParser parser = new JSONParser();
         		  try {
-            		  JSONObject obj = (JSONObject) parser.parse(String.valueOf(tranSactionInfo.get(dbName).get(index)));
-                	  query_time = Float.parseFloat(obj.get("query_time").toString());
-                	  tran_time = Float.parseFloat(obj.get("tran_time").toString());
-                	  sql_id = obj.get("SQL_ID").toString();
-                      if ( (query_time > 3 || tran_time > 3) && !sql_id.equals("empty")) {
-                    	  pidLv.add(obj.get("pid").toString());
-                    	  sqlTextLv.add(obj.get("SQL_Text").toString());
-                    	  userLv.add(obj.get("@user").toString());
-                    	  hostLv.add(obj.get("host").toString());
-                    	  programLv.add(obj.get("program").toString());
-                    	  sqlIdLv.add(sql_id);
-                    	  queryTimeLv.add(query_time);
-                    	  tranTimeLv.add(tran_time);
+            	    JSONObject obj = (JSONObject) parser.parse(String.valueOf(tranSactionInfo.get(dbName).get(index)));
+                  query_time = Float.parseFloat(String.valueOf(obj.get("query_time")));
+                  tran_time = Float.parseFloat(String.valueOf(obj.get("tran_time")));
+                  sql_id = String.valueOf(obj.get("SQL_ID"));
+                  if ( (query_time > 3 || tran_time > 3) && !sql_id.equals("empty")) {
+                      pidLv.add(String.valueOf(obj.get("pid")));
+                    	if (obj.get("SQL_Text") != null) {
+                    	    sqlTextLv.add(String.valueOf(obj.get("SQL_Text")));
+                      } else {
+                    	    sqlTextLv.add("not support on CMS version");
+                      }
+                      userLv.add(String.valueOf(obj.get("@user")));
+                      hostLv.add(String.valueOf(obj.get("host")));
+                      programLv.add(String.valueOf(obj.get("program")));
+                    	sqlIdLv.add(sql_id);
+                    	queryTimeLv.add(query_time);
+                    	tranTimeLv.add(tran_time);
                       }
         		  }
         		  catch (ParseException e) {

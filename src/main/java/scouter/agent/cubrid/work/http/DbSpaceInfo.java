@@ -68,7 +68,7 @@ public class DbSpaceInfo {
 		dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_PERM_AND_TEMP_TOTAL, "0");
 		dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_PERM_AND_TEMP_USED, "0");
 		dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_TEMP_AND_TEMP_TOTAL, "0");
-		dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_TEMP_AND_TEMP_TOTAL, "0");
+		dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_TEMP_AND_TEMP_USED, "0");
         JSONArray jsonArray = new JSONArray();
 
         if (!resultJson.get("status").equals("success")) {
@@ -85,22 +85,22 @@ public class DbSpaceInfo {
                 	for (int i=0 ; i < jsonArray.size() ; i++) {
                 		obj = (JSONObject) jsonArray.get(i);
                 		if (obj.get("type").equals("PERMANENT") && obj.get("purpose").equals("PERMANENT")) {
-                			tempVal = Long.toString(pageSize * Long.parseLong(obj.get("total_size").toString()) / MEGA_BYTE); 
+                			tempVal = Long.toString(pageSize * Long.parseLong(String.valueOf(obj.get("total_size"))) / MEGA_BYTE); 
                 			dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_PERM_AND_PERM_TOTAL, tempVal);
                 			
-                			tempVal = Long.toString(pageSize * Long.parseLong(obj.get("used_size").toString()) / MEGA_BYTE);
+                			tempVal = Long.toString(pageSize * Long.parseLong(String.valueOf(obj.get("used_size"))) / MEGA_BYTE);
                 			dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_PERM_AND_PERM_USED, tempVal);
                 		} else if (obj.get("type").equals("PERMANENT") && obj.get("purpose").equals("TEMPORARY")) {
-                			tempVal = Long.toString(pageSize * Long.parseLong(obj.get("total_size").toString()) / MEGA_BYTE);
+                			tempVal = Long.toString(pageSize * Long.parseLong(String.valueOf(obj.get("total_size"))) / MEGA_BYTE);
                 			dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_PERM_AND_TEMP_TOTAL, tempVal);
                 			
-                			tempVal = Long.toString(pageSize * Long.parseLong(obj.get("used_size").toString()) / MEGA_BYTE);
+                			tempVal = Long.toString(pageSize * Long.parseLong(String.valueOf(obj.get("used_size"))) / MEGA_BYTE);
                 			dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_PERM_AND_TEMP_USED, tempVal);
                 		} else if (obj.get("type").equals("TEMPORARY") && obj.get("purpose").equals("TEMPORARY")) {
-                			tempVal = Long.toString(pageSize * Long.parseLong(obj.get("total_size").toString()) / MEGA_BYTE);
+                			tempVal = Long.toString(pageSize * Long.parseLong(String.valueOf(obj.get("total_size"))) / MEGA_BYTE);
                 			dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_TEMP_AND_TEMP_TOTAL,tempVal);
                 			
-                			tempVal = Long.toString(pageSize * Long.parseLong(obj.get("used_size").toString()) / MEGA_BYTE);
+                			tempVal = Long.toString(pageSize * Long.parseLong(String.valueOf(obj.get("used_size"))) / MEGA_BYTE);
                 			dbData.dbSpaceData.put(StatusServerInfoList.DBSPACE_TEMP_AND_TEMP_USED, tempVal);
                 		}
                 	}

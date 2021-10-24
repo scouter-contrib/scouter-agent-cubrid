@@ -58,11 +58,11 @@ public class DbProcStatWork {
         DbData dbData = CMServerInfo.getInstance().activeDbData.get(dbName);
         DBProcStat dbProcStat = new DBProcStat();
         dbProcStat.setCpuUserDelta(
-                Long.parseLong(dbData.lastDbProcStatData.get("cpu_user").toString())
-                        - Long.parseLong(dbData.prvDbProcStatData.get("cpu_user").toString()));
+                Long.parseLong(String.valueOf(dbData.lastDbProcStatData.get("cpu_user")))
+                        - Long.parseLong(String.valueOf(dbData.prvDbProcStatData.get("cpu_user"))));
         dbProcStat.setCpuKernelDelta(
-                Long.parseLong(dbData.lastDbProcStatData.get("cpu_kernel").toString())
-                        - Long.parseLong(dbData.prvDbProcStatData.get("cpu_kernel").toString()));
+                Long.parseLong(String.valueOf(dbData.lastDbProcStatData.get("cpu_kernel")))
+                        - Long.parseLong(String.valueOf(dbData.prvDbProcStatData.get("cpu_kernel"))));
         dbProcStatDelta.put(dbName, dbProcStat);
     }
 
