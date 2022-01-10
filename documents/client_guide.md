@@ -1,3 +1,4 @@
+[![English](https://img.shields.io/badge/language-English-orange.svg)](client_guide.md) [![Korean](https://img.shields.io/badge/language-Korean-blue.svg)](client_guide_KR.md)
 # Client UI Guide
 
 ## **- Connect**
