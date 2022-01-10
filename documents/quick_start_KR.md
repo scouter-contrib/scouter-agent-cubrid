@@ -11,11 +11,11 @@ Scouter Server, Client, Agent를 설치하고 환경 설정을 완료하면 Scou
 - Scouter Version 2.15.0 이상
 - https://github.com/scouter-project/scouter/releases/tag/v2.15.0
 
-#### 2. 2. 받은 파일 압축 해제
+#### 2. 2. 받은 파일 압축 해제.
 <p>원하는 디렉토리에 압축을 해제하세요.</p>
 <img src="images/quick_start/server_1.png"  width="50%" height="50%"/>
 
-#### 3. Scouter server(Collector)를 실행 합니다.
+#### 3. Scouter server(Collector)를 실행.
 - Linux
 ```
 startup.sh
@@ -94,7 +94,7 @@ stop.bat
 
 #### 3. scouter client 실행
 스카우터 클라이언트 실행 파일(scouter.exe)을 클릭하여 실행합니다.
-로그인 화면에서 수집 서버는 [server_ip]:[server_port]로, 기본 아이디/비밀번호는 admin/admin으로 로그인할 수 있습니다.
+<p>로그인 화면에서 수집 서버는 [server_ip]:[server_port]로, 기본 아이디/비밀번호는 admin/admin으로 로그인할 수 있습니다.</p>
 <img src="images/quick_start/client_2.png"  width="20%" height="20%"/>
 
 #### 4. CUBRID Perspective 열기

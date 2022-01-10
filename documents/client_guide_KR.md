@@ -26,15 +26,15 @@ Perspective를 추가하여 CUBRID 정보를 확인할 수 있다.
 ## **- View 추가**
 
 * ObjectView에서 Cubrid Object를 선택한 후 컨텍스트 메뉴와 메인메뉴(Object)를 통해
-초기 Perspective에 더 많은 View를 추가할 수 있습니다.
+초기 Perspective에 더 많은 View를 추가할 수 있다.
 
 <img src="images/guide/ui_g_va_1.png"  width="50%" height="50%"/>
 <img src="images/guide/ui_g_va_2.png"  width="50%" height="50%"/>
 <img src="images/guide/ui_g_va_3.png"  width="50%" height="50%"/>
 
 
-* 각 View에서는 컨텍스트 메뉴를 통해 선택이 고정되어 있는 DB와 모니터링 항목이 있는 View가 추가됩니다.
-* DB, 모니터링 항목에 선택은 고정되어 재기동해도 유지 됩니다.
+* 각 View에서는 컨텍스트 메뉴를 통해 선택이 고정되어 있는 DB와 모니터링 항목이 있는 View가 추가된다.
+* DB, 모니터링 항목에 선택은 고정되어 재기동해도 유지 된다.
 
 <img src="images/guide/ui_g_vi_4_add.png"  width="50%" height="50%"/>
 
@@ -46,7 +46,7 @@ Perspective를 추가하여 CUBRID 정보를 확인할 수 있다.
 <img src="images/guide/ui_g_vi_1.png"  width="50%" height="50%"/>
 
 CMS(CUBRID Manager Server 이하 CMS)에 연결된 CUBRID DB 정보, DB 내 CPU 사용량, ACTIVE SESSION,
-LOCK WAIT SESSIONS 정보가 표시되며 View는 닫을 수 없으며 최소화만 할 수 있습니다.
+LOCK WAIT SESSIONS 정보가 표시되며 View는 닫을 수 없으며 최소화만 할 수 있다.
 
 ```
 * CPU(%) : DB에 CPU 사용량. 
@@ -101,7 +101,7 @@ Error Query Per 5 Second : 브로커 상태 정보의 Error 질의를 5초 동�
 
 <img src="images/guide/ui_g_vi_4_add.png"  width="50%" height="50%"/>
 
-실시간 view 및 과거 view를 추가하여 실시간 데이터 또는 과거 데이터를 확인할 수 있습니다.
+실시간 view 및 과거 view를 추가하여 실시간 데이터 또는 과거 데이터를 확인할 수 있다.
 
 1. 실시간을 위한 Viewer : 
 CMS(CUBRID Manager Server)에서 5초마다 보낸 실시간 정보.
@@ -146,8 +146,8 @@ DB별 볼륨 용량 정보를 보여주는 View.
 
 ### **4) Long Transaction List**
 
-3초 이상 시간이 초과된 트랜잭션 정보는 View에 생성되어 업데이트됩니다.
-동일한 SQL 텍스트라도 호스트, pid, 사용자, 프로그램이 다르면 다른 트랜잭션입니다.
-MaxList는 변경이 가능하며 10부터 1000까지 데이터를 확인할 수 있습니다.
+3초 이상 시간이 초과된 트랜잭션 정보는 View에 생성되어 업데이트된다.
+동일한 SQL 텍스트라도 호스트, pid, 사용자, 프로그램이 다르면 다른 트랜잭션이다.
+MaxList는 변경이 가능하며 10부터 1000까지 데이터를 확인할 수 있다.
 
 <img src="images/guide/ui_g_vi_9_transaction.png"  width="50%" height="50%"/>
