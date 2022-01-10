@@ -61,7 +61,7 @@ LOCK WAIT SESSIONS 정보가 표시되며 View는 닫을 수 없으며 최소화
 
 DB 정보와 브로커 정보 중 하나의 항목을 그래프로 표시하는 View이다.
 
-#### **Single item list**
+#### **-모니터링 항목 리스트-**
 
 1. ServerInfo 정보와 동일한 정보
 
